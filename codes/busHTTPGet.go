@@ -10,7 +10,7 @@ var i int = 0
 var convStr string
 var z string
 
-func main(){
+/*func main(){
     for i = 0; i < 1500; i++ {
         z = strconv.Itoa(i)
         url := "http://www.urbanosdezaragoza.es/frm_esquemaparadatime.php?poste=" + z
@@ -25,10 +25,10 @@ func main(){
             }
         }
     }
-}
+}*/
 
 //FAILED ATTEMPT WITH GO ****** THREADS
-/*func ping(fromPost, toPost int, message chan string){
+func ping(fromPost, toPost int, message chan string){
     for i = fromPost; i < toPost; i++ {
         z := strconv.Itoa(i)
         url := "http://www.urbanosdezaragoza.es/frm_esquemaparadatime.php?poste=" + z
@@ -46,9 +46,9 @@ func main(){
         }
     }
 }
-func printer(mes chan string){
+func printer(message chan string){
     for{
-        msgOne := <- mes
+        msgOne := <- message
         fmt.Println(msgOne)
     }
 }
@@ -57,4 +57,4 @@ func main(){
     go ping(0, 200, message)
     go printer(message)
     fmt.Println("Done")
-}*/
+}
